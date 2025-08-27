@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>thebrand</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      background: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+      background: white;
+      z-index: 10;
+    }
+
+    .brand {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: black;
+    }
+
+    .menu-btn {
+      font-size: 28px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: black;
+    }
+
+    .hero {
+      width: 100%;
+      height: calc(100vh - 70px);
+      background: url("2pac.webp") no-repeat center center/cover;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">MY BRAND</div>
+    <button class="menu-btn">☰</button>
+  </header>
+
+  <div class="hero"></div>
+</body>
+</html>
