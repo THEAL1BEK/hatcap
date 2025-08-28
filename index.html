@@ -6,7 +6,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: 'Playfair Display', serif;
       background: white;
@@ -29,11 +28,7 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .brand {
-      font-size: calc(2vw + 2vh);
-      font-weight: 700;
-      color: black;
-    }
+    .brand { font-size: calc(2vw + 2vh); font-weight: 700; color: black; }
 
     /* Кнопка меню */
     .menu-btn {
@@ -81,71 +76,41 @@
       text-decoration: none;
     }
 
+    /* Скрытая ссылка WhatsApp */
+    #whatsappLink {
+      display: none;
+      margin-top: 1vh;
+      color: green;
+      text-decoration: none;
+      font-size: calc(2vw + 1vh);
+    }
+
     /* Основная картинка */
     .hero {
       width: 100%;
       height: calc(100vh - 12vh);
       background: url("2pac.webp") no-repeat center top/cover;
       margin-top: 12vh;
-      position: relative;
     }
 
-    /* Кнопка каталога */
+    /* Кнопка каталога товаров */
     .catalog-btn {
-      position: absolute;
-      bottom: 5%;
+      position: fixed;
+      bottom: 5vh;
       left: 50%;
       transform: translateX(-50%);
       background: white;
       color: black;
       font-family: 'Playfair Display', serif;
-      font-size: 3.5vw;
-      padding: 1.5vh 3vw;
-      text-decoration: none;
+      font-size: 2.5vh;
+      padding: 1vh 3vw;
       border-radius: 5px;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-      text-align: center;
+      text-decoration: none;
+      z-index: 1001;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
+    .catalog-btn:hover { background: #f0f0f0; }
 
-    .catalog-btn:hover {
-      background: #f2f2f2;
-    }
-
-    /* Адаптация для больших экранов */
-    @media (max-width: 1200px) {
-      .brand { font-size: calc(1.8vw + 2vh); }
-      .menu-btn { width: 3vw; height: 2.8vh; }
-      .menu-btn span { height: 0.4vh; }
-      .side-menu a { font-size: calc(2.2vw + 1vh); }
-      .catalog-btn { font-size: 3.5vw; padding: 1.5vh 3vw; }
-    }
-
-    @media (max-width: 992px) {
-      .brand { font-size: calc(3vw + 2vh); }
-      .menu-btn { width: 3vw; height: 2.5vh; }
-      .menu-btn span { height: 0.35vh; }
-      .side-menu a { font-size: calc(2vw + 1vh); }
-      .catalog-btn { font-size: 4vw; padding: 2vh 4vw; }
-    }
-
-    @media (max-width: 768px) {
-      .brand { font-size: calc(3vw + 2vh); }
-      .menu-btn { width: 4vw; height: 3vh; }
-      .menu-btn span { height: 0.4vh; }
-      .side-menu a { font-size: calc(3vw + 1vh); }
-      .catalog-btn { font-size: 4.5vw; padding: 2.5vh 4vw; }
-    }
-
-    @media (max-width: 480px) {
-      header { height: 11vh; padding: 0 5vw; }
-      .brand { font-size: 9vw; }
-      .menu-btn { width: 18vw; height: 6vh; }
-      .menu-btn span { height: 0.8vh; }
-      .side-menu { width: 70vw; padding-top: 15vh; }
-      .side-menu a { font-size: 8vw; margin-bottom: 6vh; }
-      .catalog-btn { font-size: 6vw; padding: 3vh 6vw; }
-    }
   </style>
 </head>
 <body>
@@ -159,22 +124,30 @@
   </header>
 
   <nav class="side-menu" id="sideMenu">
-    <a href="#">Men</a>
-    <a href="#">Women</a>
-    <a href="#">Contacts</a>
-    <a href="#">Custom Care</a>
+    <a href="catalog.html?filter=men" class="menu-item">Men</a>
+    <a href="catalog.html?filter=women" class="menu-item">Women</a>
+    <a href="#" id="contactsBtn">Contacts</a>
+    <a href="#" id="whatsappLink" target="_blank">Написать в WhatsApp</a>
   </nav>
 
-  <section class="hero">
-    <a href="catalog.html" class="catalog-btn">Каталог товаров</a>
-  </section>
+  <section class="hero"></section>
+
+  <a href="catalog.html" class="catalog-btn">Каталог товаров</a>
 
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const sideMenu = document.getElementById('sideMenu');
+    const contactsBtn = document.getElementById('contactsBtn');
+    const whatsappLink = document.getElementById('whatsappLink');
 
+    // Открытие/закрытие бокового меню
     menuBtn.addEventListener('click', () => {
       sideMenu.classList.toggle('open');
+    });
+
+    // Показ/скрытие ссылки WhatsApp
+    contactsBtn.addEventListener('click', () => {
+      whatsappLink.style.display = whatsappLink.style.display === 'none' ? 'block' : 'none';
     });
   </script>
 </body>
