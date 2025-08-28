@@ -2,11 +2,16 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Каталог товаров</title>
+  <title>Главная страница</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Playfair Display', serif; background: white; overflow-x: hidden; }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      background: white;
+      overflow-x: hidden;
+    }
 
     /* Шапка */
     header {
@@ -23,7 +28,12 @@
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    .brand { font-size: calc(2vw + 2vh); font-weight: 700; color: black; }
+
+    .brand {
+      font-size: calc(2vw + 2vh);
+      font-weight: 700;
+      color: black;
+    }
 
     /* Кнопка меню */
     .menu-btn {
@@ -35,7 +45,13 @@
       cursor: pointer;
       z-index: 1001;
     }
-    .menu-btn span { display: block; height: 0.5vh; background: black; border-radius: 1px; }
+
+    .menu-btn span {
+      display: block;
+      height: 0.5vh;
+      background: black;
+      border-radius: 1px;
+    }
 
     /* Боковое меню */
     .side-menu {
@@ -54,90 +70,81 @@
       display: flex;
       flex-direction: column;
     }
+
     .side-menu.open { right: 0; }
-    .side-menu a { font-family: 'Playfair Display', serif; margin-bottom: 5vh; font-size: calc(2.5vw + 1vh); color: black; text-decoration: none; }
 
-    /* Фильтр */
-    .filter {
-      margin-top: 14vh;
-      text-align: center;
-      padding: 2vh 0;
-    }
-    .filter button {
+    .side-menu a {
       font-family: 'Playfair Display', serif;
-      font-size: 2vw;
-      padding: 1vh 2vw;
-      margin: 0 1vw;
-      border: 1px solid black;
-      background: white;
-      cursor: pointer;
-      border-radius: 5px;
+      margin-bottom: 5vh;
+      font-size: calc(2.5vw + 1vh);
+      color: black;
+      text-decoration: none;
     }
-    .filter button:hover { background: #f2f2f2; }
 
-    /* Каталог */
-    .catalog {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 2vh 2vw 5vh;
-      gap: 2vw;
+    /* Основная картинка */
+    .hero {
+      width: 100%;
+      height: calc(100vh - 12vh);
+      background: url("2pac.webp") no-repeat center top/cover;
+      margin-top: 12vh;
+      position: relative;
     }
-    .item {
-      width: 22%;
-      min-width: 200px;
+
+    /* Кнопка каталога */
+    .catalog-btn {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 1vh 1vw;
+      color: black;
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5vw;
+      padding: 1.5vh 3vw;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
       text-align: center;
     }
-    .item img { width: 100%; border-radius: 10px; }
-    .item h2 { font-size: 1.5vw; margin: 1vh 0; }
-    .item p { font-size: 1vw; color: #555; margin-bottom: 1vh; }
-    .item button { padding: 1vh 1.5vw; background: black; color: white; border: none; border-radius: 5px; cursor: pointer; }
-    .item button:hover { background: #333; }
 
-    /* Адаптив */
-    @media(max-width:1200px){
+    .catalog-btn:hover {
+      background: #f2f2f2;
+    }
+
+    /* Адаптация для больших экранов */
+    @media (max-width: 1200px) {
       .brand { font-size: calc(1.8vw + 2vh); }
       .menu-btn { width: 3vw; height: 2.8vh; }
       .menu-btn span { height: 0.4vh; }
       .side-menu a { font-size: calc(2.2vw + 1vh); }
-      .filter button { font-size: 2.2vw; padding: 1vh 2.2vw; }
-      .item h2 { font-size: 1.7vw; }
-      .item p { font-size: 1.2vw; }
+      .catalog-btn { font-size: 3.5vw; padding: 1.5vh 3vw; }
     }
-    @media(max-width:992px){
+
+    @media (max-width: 992px) {
       .brand { font-size: calc(3vw + 2vh); }
       .menu-btn { width: 3vw; height: 2.5vh; }
       .menu-btn span { height: 0.35vh; }
       .side-menu a { font-size: calc(2vw + 1vh); }
-      .filter button { font-size: 2.5vw; padding: 1.2vh 2.5vw; }
-      .item h2 { font-size: 2vw; }
-      .item p { font-size: 1.3vw; }
+      .catalog-btn { font-size: 4vw; padding: 2vh 4vw; }
     }
-    @media(max-width:768px){
+
+    @media (max-width: 768px) {
       .brand { font-size: calc(3vw + 2vh); }
       .menu-btn { width: 4vw; height: 3vh; }
       .menu-btn span { height: 0.4vh; }
       .side-menu a { font-size: calc(3vw + 1vh); }
-      .filter button { font-size: 3vw; padding: 1.5vh 3vw; }
-      .item h2 { font-size: 2.5vw; }
-      .item p { font-size: 1.5vw; }
+      .catalog-btn { font-size: 4.5vw; padding: 2.5vh 4vw; }
     }
-    @media(max-width:480px){
+
+    @media (max-width: 480px) {
       header { height: 11vh; padding: 0 5vw; }
       .brand { font-size: 9vw; }
       .menu-btn { width: 18vw; height: 6vh; }
       .menu-btn span { height: 0.8vh; }
       .side-menu { width: 70vw; padding-top: 15vh; }
       .side-menu a { font-size: 8vw; margin-bottom: 6vh; }
-      .filter button { font-size: 6vw; padding: 2.5vh 4vw; margin: 1vw; }
-      .item { width: 90%; }
-      .item h2 { font-size: 5vw; }
-      .item p { font-size: 3.5vw; }
-      .item button { padding: 2vh 5vw; font-size: 4vw; }
+      .catalog-btn { font-size: 6vw; padding: 3vh 6vw; }
     }
   </style>
 </head>
@@ -158,51 +165,17 @@
     <a href="#">Custom Care</a>
   </nav>
 
-  <div class="filter">
-    <button data-filter="all">All</button>
-    <button data-filter="men">Men</button>
-    <button data-filter="women">Women</button>
-  </div>
-
-  <div class="catalog">
-    <div class="item" data-category="men">
-      <img src="cap1.jpg" alt="Мужская кепка 1">
-      <h2>Мужская кепка 1</h2>
-      <p>Стильная мужская кепка.</p>
-      <button>Купить</button>
-    </div>
-    <div class="item" data-category="men">
-      <img src="cap2.jpg" alt="Мужская кепка 2">
-      <h2>Мужская кепка 2</h2>
-      <p>Спортивная мужская кепка.</p>
-      <button>Купить</button>
-    </div>
-    <div class="item" data-category="women">
-      <img src="cap3.jpg" alt="Женская кепка 1">
-      <h2>Женская кепка 1</h2>
-      <p>Элегантная женская кепка.</p>
-      <button>Купить</button>
-    </div>
-    <div class="item" data-category="women">
-      <img src="cap4.jpg" alt="Женская кепка 2">
-      <h2>Женская кепка 2</h2>
-      <p>Стильная женская кепка.</p>
-      <button>Купить</button>
-    </div>
-  </div>
+  <section class="hero">
+    <a href="catalog.html" class="catalog-btn">Каталог товаров</a>
+  </section>
 
   <script>
-    // Меню гамбургер
     const menuBtn = document.getElementById('menuBtn');
     const sideMenu = document.getElementById('sideMenu');
+
     menuBtn.addEventListener('click', () => {
       sideMenu.classList.toggle('open');
     });
-
-    // Фильтр товаров
-    const filterButtons = document.querySelectorAll('.filter button');
-    const items = document.querySelectorAll('.catalog .item');
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const filter = btn.get
+  </script>
+</body>
+</html>
