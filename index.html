@@ -1,3 +1,4 @@
+<!-- index.html (Главная страница) -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,132 +7,74 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Playfair Display', serif;
-      background: white;
-      overflow-x: hidden;
-    }
+    body { font-family: 'Playfair Display', serif; background: white; overflow-x: hidden; }
 
     /* Шапка */
     header {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 12vh;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 5vw;
-      background: white;
-      z-index: 1000;
+      top: 0; left: 0; width: 100%; height: 12vh;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 5vw; background: white; z-index: 1000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-
     .brand { font-size: calc(2vw + 2vh); font-weight: 700; color: black; }
 
     /* Кнопка меню */
-    .menu-btn {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 4vw;
-      height: 3vh;
-      cursor: pointer;
-      z-index: 1001;
-    }
-
-    .menu-btn span {
-      display: block;
-      height: 0.5vh;
-      background: black;
-      border-radius: 1px;
-    }
+    .menu-btn { display: flex; flex-direction: column; justify-content: space-between; width: 4vw; height: 3vh; cursor: pointer; z-index: 1001; }
+    .menu-btn span { display: block; height: 0.5vh; background: black; border-radius: 1px; }
 
     /* Боковое меню */
     .side-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 60vw;
-      max-width: 300px;
-      height: 100%;
-      background: white;
-      transition: right 0.3s ease;
-      z-index: 999;
-      padding-top: 12vh;
-      padding-left: 5vw;
-      padding-right: 5vw;
-      display: flex;
-      flex-direction: column;
+      position: fixed; top: 0; right: -100%; width: 60vw; max-width: 300px; height: 100%;
+      background: white; transition: right 0.3s ease; z-index: 999;
+      padding-top: 12vh; padding-left: 5vw; padding-right: 5vw; display: flex; flex-direction: column;
     }
-
     .side-menu.open { right: 0; }
-
-    .side-menu a {
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 5vh;
-      font-size: calc(2.5vw + 1vh);
-      color: black;
-      text-decoration: none;
-    }
+    .side-menu a { font-family: 'Playfair Display', serif; margin-bottom: 5vh; font-size: calc(2.5vw + 1vh); color: black; text-decoration: none; }
 
     /* Скрытая ссылка WhatsApp */
-    #whatsappLink {
-      display: none;
-      margin-top: 1vh;
-      color: green;
-      text-decoration: none;
-      font-size: calc(2vw + 1vh);
-    }
+    #whatsappLink { display: none; margin-top: 1vh; color: green; text-decoration: none; font-size: calc(2vw + 1vh); }
 
     /* Основная картинка */
-    .hero {
-      width: 100%;
-      height: calc(100vh - 12vh);
-      background: url("2pac.webp") no-repeat center top/cover;
-      margin-top: 12vh;
-    }
+    .hero { width: 100%; height: calc(100vh - 12vh); background: url("2pac.webp") no-repeat center top/cover; margin-top: 12vh; }
 
     /* Кнопка каталога товаров */
     .catalog-btn {
-      position: fixed;
-      bottom: 5vh;
-      left: 50%;
-      transform: translateX(-50%);
-      background: white;
-      color: black;
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5vh;
-      padding: 1vh 3vw;
-      border-radius: 5px;
-      text-decoration: none;
-      z-index: 1001;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      position: fixed; bottom: 5vh; left: 50%; transform: translateX(-50%);
+      background: white; color: black; font-family: 'Playfair Display', serif;
+      font-size: 2.5vh; padding: 1vh 3vw; border-radius: 5px;
+      text-decoration: none; z-index: 1001; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
     .catalog-btn:hover { background: #f0f0f0; }
 
+    /* Адаптив */
+    @media (max-width: 480px) {
+      header { height: 11vh; padding: 0 5vw; }
+      .brand { font-size: 9vw; }
+      .menu-btn { width: 22vw; height: 7vh; }
+      .menu-btn span { height: 1vh; }
+      .side-menu { width: 70vw; padding-top: 15vh; }
+      .side-menu a { font-size: 8vw; margin-bottom: 6vh; }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="brand">MY BRAND</div>
     <div class="menu-btn" id="menuBtn">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
   </header>
 
   <nav class="side-menu" id="sideMenu">
-  <a href="javascript:history.back()">Back</a>
-  <a href="catalog.html">Все</a>
-  <a href="catalog.html?filter=men">men</a>
-  <a href="catalog.html?filter=women">women</a>
-  <a href="#">Contacts</a>
-  <a href="#">Custom Care</a>
-</nav>
-
+    <a href="javascript:history.back()">Back</a>
+    <a href="catalog.html">Все</a>
+    <a href="catalog.html?filter=men">Men</a>
+    <a href="catalog.html?filter=women">Women</a>
+    <a href="#" id="contactsBtn">Contacts</a>
+    <a href="#">Custom Care</a>
+    <a href="https://wa.me/77470383524" target="_blank" id="whatsappLink">Написать в WhatsApp</a>
+  </nav>
 
   <section class="hero"></section>
 
@@ -143,12 +86,8 @@
     const contactsBtn = document.getElementById('contactsBtn');
     const whatsappLink = document.getElementById('whatsappLink');
 
-    // Открытие/закрытие бокового меню
-    menuBtn.addEventListener('click', () => {
-      sideMenu.classList.toggle('open');
-    });
+    menuBtn.addEventListener('click', () => { sideMenu.classList.toggle('open'); });
 
-    // Показ/скрытие ссылки WhatsApp
     contactsBtn.addEventListener('click', () => {
       whatsappLink.style.display = whatsappLink.style.display === 'none' ? 'block' : 'none';
     });
