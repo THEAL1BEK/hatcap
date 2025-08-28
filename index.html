@@ -2,72 +2,93 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>thebrand</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <title>Каталог кепок</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Playfair Display', serif;
       background: white;
+      color: black;
+      overflow-x: hidden;
     }
 
+    /* Шапка */
     header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px;
-      position: relative;
-      background: white;
+      padding: 20px 40px;
       z-index: 10;
+      background: rgba(255,255,255,0.8); /* белое полупрозрачное поле */
     }
 
     .brand {
-      font-size: 32px;
+      font-size: 48px;
       font-weight: 700;
-      letter-spacing: 2px;
-      color: black;
+      letter-spacing: 4px;
     }
 
     .menu-btn {
-      font-size: 28px;
+      width: 30px;
+      height: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       cursor: pointer;
-      border: none;
-      background: none;
-      color: black;
     }
 
+    .menu-btn span {
+      display: block;
+      height: 3px;
+      background: black;
+      border-radius: 2px;
+    }
+
+    /* Главная картинка */
     .hero {
       width: 100%;
-      height: calc(100vh - 70px);
+      height: 100vh;
       background: url("2pac.webp") no-repeat center center/cover;
     }
-   
-@media (max-width: 768px) {
-  .brand {
-    font-size: 24px;
-  }
-  .hero {
-    height: 80vh; 
-  }
-}
 
-@media (max-width: 480px) {
-  .brand {
-    font-size: 20px;
-  }
-  .hero {
-    height: 70vh; 
-  }
-}
+    /* Адаптив */
+    @media (max-width: 768px) {
+      .brand {
+        font-size: 36px;
+      }
+      header {
+        padding: 15px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand {
+        font-size: 28px;
+      }
+      header {
+        padding: 10px 15px;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="brand">MY BRAND</div>
-    <button class="menu-btn">☰</button>
+    <div class="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
 
-  <div class="hero"></div>
+  <section class="hero">
+    <!-- сюда вставляешь свою большую картинку -->
+  </section>
 </body>
 </html>
