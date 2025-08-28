@@ -6,76 +6,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin:0; padding:0; }
-    body { font-family:'Playfair Display', serif; background:#f9f9f9; }
+    body { font-family:'Playfair Display', serif; background:#f9f9f9; overflow-x:hidden; }
 
+    /* Шапка */
     header {
       position: fixed; top:0; left:0; width:100%; height:12vh;
       display:flex; justify-content:space-between; align-items:center;
       padding:0 5vw; background:white; z-index:1000; box-shadow:0 2px 5px rgba(0,0,0,0.1);
     }
-
-     .menu-btn {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 4vw;
-      height: 3vh;
-      cursor: pointer;
-      z-index: 1001;
-    }
-
-    .menu-btn span {
-      display: block;
-      height: 0.5vh;
-      background: black;
-      border-radius: 1px;
-    }
-
-    /* Боковое меню */
-    .side-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 60vw;
-      max-width: 300px;
-      height: 100%;
-      background: white;
-      transition: right 0.3s ease;
-      z-index: 999;
-      padding-top: 12vh;
-      padding-left: 5vw;
-      padding-right: 5vw;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .side-menu.open { right: 0; }
-
-    .side-menu a {
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 5vh;
-      font-size: calc(2.5vw + 1vh);
-      color: black;
-      text-decoration: none;
-    }
-
-    /* Скрытая ссылка WhatsApp */
-    #whatsappLink {
-      display: none;
-      margin-top: 1vh;
-      color: green;
-      text-decoration: none;
-      font-size: calc(2vw + 1vh);
-    }
-
     .brand { font-size: calc(2vw + 2vh); font-weight:700; color:black; }
     .menu-btn { display:flex; flex-direction:column; justify-content:space-between; width:4vw; height:3vh; cursor:pointer; z-index:1001; }
     .menu-btn span { display:block; height:0.5vh; background:black; border-radius:1px; }
 
-    .side-menu { position: fixed; top:0; right:-100%; width:60vw; max-width:300px; height:100%; background:white; transition:right 0.3s ease; z-index:999; padding-top:12vh; padding-left:5vw; padding-right:5vw; display:flex; flex-direction:column; }
+    /* Боковое меню */
+    .side-menu {
+      position: fixed; top:0; right:-100%; width:60vw; max-width:300px; height:100%;
+      background:white; transition:right 0.3s ease; z-index:999;
+      padding-top:12vh; padding-left:5vw; padding-right:5vw; display:flex; flex-direction:column;
+    }
     .side-menu.open { right:0; }
-    .side-menu a { margin-bottom:5vh; font-size:calc(2.5vw + 1vh); color:black; text-decoration:none; font-family:'Playfair Display', serif; }
+    .side-menu a { font-family:'Playfair Display', serif; margin-bottom:5vh; font-size:calc(2.5vw + 1vh); color:black; text-decoration:none; }
 
+    /* Скрытая ссылка WhatsApp */
+    #whatsappLink { display:none; margin-top:1vh; color:green; text-decoration:none; font-size:calc(2vw + 1vh); }
+
+    /* Каталог */
     .catalog { display:flex; flex-wrap:wrap; justify-content:center; padding:15vh 5vw 5vw 5vw; }
     .item { background:white; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); width:250px; margin:15px; padding:15px; text-align:center; }
     .item img { width:100%; border-radius:10px; }
@@ -84,49 +39,86 @@
     .item button { margin-top:10px; padding:10px 15px; background:#222; color:white; border:none; border-radius:5px; cursor:pointer; }
     .item button:hover { background:#444; }
 
+    /* Адаптив */
+    @media(max-width:768px) { 
+      .item { width:90%; } 
+      .item h2{font-size:2.5vh;} 
+      .item p{font-size:2vh;} 
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="brand">MY BRAND</div>
     <div class="menu-btn" id="menuBtn">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
   </header>
 
- <nav class="side-menu" id="sideMenu">
-  <a href="javascript:history.back()">Back</a>
-  <a href="catalog.html">Все</a>
-  <a href="catalog.html?filter=men">men</a>
-  <a href="catalog.html?filter=women">women</a>
-  <a href="#">Contacts</a>
-  <a href="#">Custom Care</a>
-</nav>
+  <nav class="side-menu" id="sideMenu">
+    <a href="javascript:history.back()">Back</a>
+    <a href="catalog.html">Все</a>
+    <a href="catalog.html?filter=men">Men</a>
+    <a href="catalog.html?filter=women">Women</a>
+    <a href="#" id="contactsBtn">Contacts</a>
+    <a href="#">Custom Care</a>
+    <a href="https://wa.me/77470383524" target="_blank" id="whatsappLink">Написать в WhatsApp</a>
+  </nav>
 
   <div class="catalog" id="catalog">
     <div class="item" data-category="men">
       <img src="cap1.jpg" alt="prada">
-      <h2>prada</h2>
+      <h2>Prada</h2>
       <p>first</p>
       <button>Купить</button>
     </div>
     <div class="item" data-category="men">
       <img src="cap2.jpg" alt="gucci">
-      <h2>gucci</h2>
+      <h2>Gucci</h2>
       <p>second</p>
       <button>Купить</button>
     </div>
     <div class="item" data-category="women">
       <img src="cap4.jpg" alt="polo">
-      <h2>polo</h2>
+      <h2>Polo</h2>
       <p>third</p>
       <button>Купить</button>
     </div>
-     <div class="item" data-category="women">
+    <div class="item" data-category="women">
       <img src="cap5.jpg" alt="lalo">
-      <h2>lalo</h2>
-      <p>meth</p>
+      <h2>Lalo</h2>
+      <p>fourth</p>
       <button>Купить</button>
     </div>
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    const contactsBtn = document.getElementById('contactsBtn');
+    const whatsappLink = document.getElementById('whatsappLink');
+
+    menuBtn.addEventListener('click', () => { sideMenu.classList.toggle('open'); });
+
+    contactsBtn.addEventListener('click', () => {
+      whatsappLink.style.display = whatsappLink.style.display === 'none' ? 'block' : 'none';
+    });
+
+    // Фильтр товаров
+    function filterCatalog() {
+      const params = new URLSearchParams(window.location.search);
+      const filter = params.get('filter');
+      const items = document.querySelectorAll('.item');
+      items.forEach(item => {
+        if(!filter || filter === 'all') {
+          item.style.display = 'block';
+        } else {
+          item.style.display = item.dataset.category === filter ? 'block' : 'none';
+        }
+      });
+    }
+
+    filterCatalog(); // Вызов фильтра при загрузке страницы
+  </script>
+</body>
+</html>
