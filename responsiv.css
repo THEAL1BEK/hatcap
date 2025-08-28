@@ -25,7 +25,7 @@
   .menu-btn { width: 6vw; height: 3.5vh; }
   .menu-btn span { height: 0.5vh; width: 2.5vw; }
   .side-menu { width: 40vw; padding-top: 11vh; }
-  .side-menu a { font-size: 2.5vw; margin-bottom: 3vh; }
+  .side-menu a { font-size: 1.5vw; margin-bottom: 3vh; }
 }
 
 /* 🖥 Большие экраны (десктоп) */
