@@ -14,6 +14,60 @@
       padding:0 5vw; background:white; z-index:1000; box-shadow:0 2px 5px rgba(0,0,0,0.1);
     }
 
+     .menu-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 4vw;
+      height: 3vh;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .menu-btn span {
+      display: block;
+      height: 0.5vh;
+      background: black;
+      border-radius: 1px;
+    }
+
+    /* Боковое меню */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 60vw;
+      max-width: 300px;
+      height: 100%;
+      background: white;
+      transition: right 0.3s ease;
+      z-index: 999;
+      padding-top: 12vh;
+      padding-left: 5vw;
+      padding-right: 5vw;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .side-menu.open { right: 0; }
+
+    .side-menu a {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 5vh;
+      font-size: calc(2.5vw + 1vh);
+      color: black;
+      text-decoration: none;
+    }
+
+    /* Скрытая ссылка WhatsApp */
+    #whatsappLink {
+      display: none;
+      margin-top: 1vh;
+      color: green;
+      text-decoration: none;
+      font-size: calc(2vw + 1vh);
+    }
+
     .brand { font-size: calc(2vw + 2vh); font-weight:700; color:black; }
     .menu-btn { display:flex; flex-direction:column; justify-content:space-between; width:4vw; height:3vh; cursor:pointer; z-index:1001; }
     .menu-btn span { display:block; height:0.5vh; background:black; border-radius:1px; }
