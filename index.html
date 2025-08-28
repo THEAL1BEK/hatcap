@@ -116,34 +116,14 @@
                    font-family: 'Playfair Display', serif; }
     }
 
-  @media (max-width: 480px) {
-  /* Шапка */
-  header {
-    height: 20vh;         /* высота шапки пропорциональна экрану */
-    padding: 0 5vw;       /* отступы по горизонтали */
-  }
-
-  /* Название бренда */
-  .brand {
-    font-size: 11vw;        /* масштабируется под ширину экрана */
-  }
-
-  /* Кнопка меню */
-  .menu-btn {
-    width: 15vw;           /* пропорциональная ширина */
-    height: 7vh;           /* пропорциональная высота */
-  }
-
-  .menu-btn span {
-    height: 1vh;         /* толщина полосок меню */
-  }
-
-  /* Боковое меню */
-  .side-menu a {
-    font-size: 8vw;        /* крупные кнопки для пальцев */
-    margin-bottom: 6vh;    /* расстояние между кнопками */
-    font-family: 'Playfair Display', serif; /* шрифт как у бренда */
-  }
+@media only screen and (max-width: 480px) {
+  header { height: 120px; }
+  .brand { font-size: 36px; }
+  .menu-btn { width: 50px; height: 35px; }
+  .menu-btn span { height: 5px; }
+  .side-menu a { font-size: 28px; margin-bottom: 30px;
+                font-family: 'Playfair Display', serif;}
+}
 
     }
 
