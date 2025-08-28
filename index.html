@@ -5,9 +5,13 @@
   <title>Главная страница</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    body {
       font-family: 'Playfair Display', serif;
       background: white;
       overflow-x: hidden;
@@ -19,36 +23,35 @@
       top: 0;
       left: 0;
       width: 100%;
+      height: 80px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
-      background: white; /* полностью белая */
-      z-index: 1001;
+      padding: 0 40px;
+      background: white;
+      z-index: 1000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .brand {
       font-size: 48px;
       font-weight: 700;
-      letter-spacing: 4px;
       color: black;
     }
 
-    /* Кнопка меню */
     .menu-btn {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      width: 35px;
-      height: 25px;
+      width: 50px;
+      height: 35px;
       cursor: pointer;
-      z-index: 1002;
+      z-index: 1001;
     }
 
     .menu-btn span {
       display: block;
-      height: 4px;
+      height: 5px;
       background: black;
       border-radius: 2px;
     }
@@ -57,14 +60,15 @@
     .side-menu {
       position: fixed;
       top: 0;
-      right: -250px;
+      right: -100%;
       width: 250px;
       height: 100%;
       background: white;
-      box-shadow: -2px 0 5px rgba(0,0,0,0.2);
       transition: right 0.3s ease;
-      z-index: 1000;
-      padding: 60px 20px;
+      z-index: 999;
+      padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
     }
 
     .side-menu.open {
@@ -72,55 +76,47 @@
     }
 
     .side-menu a {
-      display: block;
-      margin-bottom: 20px;
-      font-size: 20px;
+      margin-bottom: 30px;
+      font-size: 22px;
       color: black;
       text-decoration: none;
     }
 
-    /* Главная картинка */
+    /* Основная картинка */
     .hero {
       width: 100%;
-      height: 100vh;
-      background: url("2pac.webp") no-repeat center center/cover;
-      margin-top: 0;
+      height: 100vh; /* по умолчанию на весь экран */
+      background: url("2pac.webp") no-repeat center top/cover;
+      margin-top: 80px; /* чтобы шапка не перекрывала */
     }
 
     /* Адаптив */
+    @media (max-width: 1200px) {
+      .brand { font-size: 42px; }
+      .menu-btn { width: 45px; height: 30px; }
+      .menu-btn span { height: 4px; }
+      .side-menu a { font-size: 20px; }
+    }
+
+    @media (max-width: 992px) {
+      .brand { font-size: 36px; }
+      .menu-btn { width: 40px; height: 28px; }
+      .menu-btn span { height: 4px; }
+      .side-menu a { font-size: 18px; }
+    }
+
     @media (max-width: 768px) {
-      .brand {
-        font-size: 36px;
-      }
-      header {
-        padding: 15px 20px;
-      }
-      .menu-btn {
-        width: 30px;
-        height: 22px;
-      }
-      .menu-btn span {
-        height: 3px;
-      }
+      .brand { font-size: 30px; }
+      .menu-btn { width: 35px; height: 25px; }
+      .menu-btn span { height: 3px; }
+      .side-menu a { font-size: 16px; }
     }
 
     @media (max-width: 480px) {
-      .brand {
-        font-size: 28px;
-      }
-      header {
-        padding: 10px 15px;
-      }
-      .menu-btn {
-        width: 25px;
-        height: 18px;
-      }
-      .menu-btn span {
-        height: 3px;
-      }
-      .side-menu a {
-        font-size: 18px;
-      }
+      .brand { font-size: 24px; }
+      .menu-btn { width: 30px; height: 20px; }
+      .menu-btn span { height: 3px; }
+      .side-menu a { font-size: 14px; }
     }
 
   </style>
@@ -135,16 +131,15 @@
     </div>
   </header>
 
-  <!-- Боковое меню -->
   <nav class="side-menu" id="sideMenu">
-    <a href="#">Главная</a>
-    <a href="#">Каталог</a>
-    <a href="#">Контакты</a>
-    <a href="#">О нас</a>
+    <a href="#">Men</a>
+    <a href="#">Women</a>
+    <a href="#">Contacts</a>
+    <a href="#">Custom Care</a>
   </nav>
 
   <section class="hero">
-    <!-- картинка подключена через CSS -->
+    <!-- Длинная картинка -->
   </section>
 
   <script>
