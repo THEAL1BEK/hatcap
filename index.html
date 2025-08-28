@@ -5,11 +5,7 @@
   <title>Главная страница</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Playfair Display', serif;
@@ -23,19 +19,18 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 12vh;           /* высота шапки пропорциональна экрану */
+      height: 12vh;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 5vw;        /* отступы слева и справа */
+      padding: 0 5vw;
       background: white;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    /* Название бренда */
     .brand {
-      font-size: 5vw;         /* шрифт масштабируется по ширине экрана */
+      font-size: calc(2vw + 2vh);
       font-weight: 700;
       color: black;
     }
@@ -45,17 +40,17 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      width: 10vw;            /* ширина кнопки */
-      height: 5vh;            /* высота кнопки */
+      width: 4vw;
+      height: 3vh;
       cursor: pointer;
       z-index: 1001;
     }
 
     .menu-btn span {
       display: block;
-      height: 0.8vh;          /* толщина полосок */
+      height: 0.5vh;
       background: black;
-      border-radius: 2px;
+      border-radius: 1px;
     }
 
     /* Боковое меню */
@@ -63,24 +58,25 @@
       position: fixed;
       top: 0;
       right: -100%;
-      width: 60vw;            /* ширина бокового меню пропорциональна экрану */
+      width: 60vw;
+      max-width: 300px;
       height: 100%;
       background: white;
       transition: right 0.3s ease;
       z-index: 999;
-      padding: 12vh 5vw;      /* отступ сверху равен высоте шапки */
+      padding-top: 12vh;
+      padding-left: 5vw;
+      padding-right: 5vw;
       display: flex;
       flex-direction: column;
     }
 
-    .side-menu.open {
-      right: 0;
-    }
+    .side-menu.open { right: 0; }
 
     .side-menu a {
       font-family: 'Playfair Display', serif;
       margin-bottom: 5vh;
-      font-size: 5vw;         /* шрифт адаптивный */
+      font-size: calc(2.5vw + 1vh);
       color: black;
       text-decoration: none;
     }
@@ -88,12 +84,34 @@
     /* Основная картинка */
     .hero {
       width: 100%;
-      height: 88vh;           /* оставшаяся часть экрана после шапки */
+      height: calc(100vh - 12vh);
       background: url("2pac.webp") no-repeat center top/cover;
-      margin-top: 12vh;       /* отступ, чтобы шапка не перекрывала */
+      margin-top: 12vh;
     }
 
-    /* Медиа-запросы для мелких экранов */
+    /* Адаптация для больших экранов */
+    @media (max-width: 1200px) {
+      .brand { font-size: calc(1.8vw + 2vh); }
+      .menu-btn { width: 3.5vw; height: 2.8vh; }
+      .menu-btn span { height: 0.4vh; }
+      .side-menu a { font-size: calc(2.2vw + 1vh); }
+    }
+
+    @media (max-width: 992px) {
+      .brand { font-size: calc(1.5vw + 2vh); }
+      .menu-btn { width: 3vw; height: 2.5vh; }
+      .menu-btn span { height: 0.35vh; }
+      .side-menu a { font-size: calc(2vw + 1vh); }
+    }
+
+    @media (max-width: 768px) {
+      .brand { font-size: calc(2.5vw + 2vh); }
+      .menu-btn { width: 4vw; height: 3vh; }
+      .menu-btn span { height: 0.4vh; }
+      .side-menu a { font-size: calc(3vw + 1vh); }
+    }
+
+    /* Адаптация для телефонов */
     @media (max-width: 480px) {
       header { height: 15vh; padding: 0 5vw; }
       .brand { font-size: 8vw; }
